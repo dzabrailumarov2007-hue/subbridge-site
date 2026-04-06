@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SubBridge — финальная версия + промокод</title>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=odwT63ylARSYEoUgmG0_1oDFaTSfFSkQq-cgaaBqFeoJvD3bF4YunkG01thaw__5-EA-eMdtziFuttqaBE6-mwjyVR23usWp_-oYPKroPP5zM7JsLJE2gA77zkgFL5_VjAf2AO3TR59UobUOXYIvFclzJ_dIr8CUQ-vq4o82BcfxtMjlg9ahkN_kS1qaFWVJvMbP6jJg2mlpx6-HRUdKMfD619CyweZOvZTiA-7tfEvxT149Bocx-v6gSLFF5kw2VyuOmEoDKubpJ9LhTP_8MfP64RJh6teBx2LfsQPD3ty2hFDbv13xVQ3N0rJem6Fd1dHt9aHEiP9miBNJZNGREUW8vcZovlhk4pZvi08CQa2ytuc94T7ZAu8bz9gEjRIIBPFwlfdE0aGVjKdOWJ3FmCgx1V7FyDh6AfkOAMQSoz0mhKVII6AvWjyPn-2GXUrrVItx-_MKl2Yc7NxLKc1sSvaufimUzS1gB_zel7dRYoZij8n4Og5ClNslhfv-sutgZMCc4P13-FrmYTeTt_qGmDFgSVtiwqvc_kT_1Rg9KQMYb86mf5Z53yuHEhxyRFYTZ0QWaOXr8LIFHxg6myOkSAegviMTbF-7RJFPEVESNBJAlRpARhEv-gU6qFByDFTR1jrbtglMtGRqBvA1CyPTkxmjmjRxYrh5mmbURKbg9PBInm6NfrGG9N0bV3Zwzo6myAsNb4nwCKTbLrgBMgkfY9bH-WYtQMOuRs8m4NKehya9yIiusXY0si0Eq5MWwJ_6Hli_GBlbDxdjxCuqHPB2f7mKuVgR5-2qHtB4yQDD1LfPqtYcQhnKTHHKlAC0SxvLr0XJbQKcCNIqNCQ66BpRsvslkGzlZfAq0lWBhiOe_tZ2ZUuc4yoQrBvczrIjTEFtBKZB606DAN3TeUoSZ-_wxO6kOuRS59Xo1XwGOKBNTSkYRluFOVRBZ2tGjmQ2edrWm-_mf4xllNH7xGSliPVzy_qX5wT32hjaktAGz6xYLGbdTL4i_94xtfUbf4xL0ISZhyDuwDa4fg1YM5zlZyxlZQ" charset="UTF-8"></script><style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at top left, rgba(0, 130, 110, 0.35), transparent 28%),
+        radial-gradient(circle at top right, rgba(0, 100, 90, 0.35), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(0, 120, 110, 0.25), transparent 30%),
+        linear-gradient(135deg, #001a17 0%, #012822 35%, #00110f 70%, #000000 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .contact-btn {
+      border: none;
+      background: #000;
+      color: #fff;
+      border-radius: 22px;
+      padding: 16px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .round-btn {
+      width: 58px;
+      height: 58px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(35, 35, 35, 0.88);
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 6px;
+      border-radius: 999px;
+      background: #67cf73;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #13211d;
+    }
+
+    h1 {
+      text-align: center;
+      font-style: italic;
+      font-weight: 500;
+      margin: 8px 0 26px;
+      font-size: clamp(28px, 4.5vw, 54px);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(80, 100, 70, 0.72);
+      border-radius: 28px;
+      padding: 26px;
+      text-align: center;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.24);
+      scroll-margin-top: 20px;
+    }
+
+    .icon {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1a1a1a, #000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .icon img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      color: #000;
+      font-size: 30px;
+    }
+
+    .desc {
+      color: #111;
+      min-height: 48px;
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .add-btn { background: #67cf73; }
+
+    .panel-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.25s ease;
+      z-index: 999;
+    }
+
+    .panel-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-panel {
+      position: fixed;
+      top: 0;
+      right: -340px;
+      width: 320px;
+      max-width: 90vw;
+      height: 100vh;
+      background: rgba(83, 106, 74, 0.96);
+      box-shadow: -12px 0 28px rgba(0,0,0,0.28);
+      z-index: 1000;
+      transition: right 0.28s ease;
+      padding: 22px 18px;
+      overflow-y: auto;
+    }
+
+    .side-panel.open { right: 0; }
+
+    .menu-header, .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .panel-logo, .panel-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .panel-close-btn {
+      position: absolute;
+      top: 0;
+      left: -54px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      color: #222;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    .menu-links a {
+      color: rgba(0, 0, 0, 0.68);
+      font-size: 22px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.15s ease;
+    }
+
+    .menu-links a:hover {
+      color: #000;
+      transform: translateX(4px);
+    }
+
+    .cart-empty {
+      color: #eef3ef;
+      line-height: 1.5;
+      margin: 8px 0 16px;
+      font-size: 16px;
+    }
+
+    .cart-item {
+      padding: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .cart-item-name { font-weight: 700; }
+    .cart-item-sum { color: #b8ffbf; white-space: nowrap; font-weight: 700; }
+
+    .cart-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-btn, .remove-btn, .promo-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      color: #fff;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      background: #67cf73;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .remove-btn {
+      background: #cf5555;
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+
+    .promo-box {
+      margin-top: 16px;
+      padding: 12px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+    }
+
+    .promo-label {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #eef3ef;
+    }
+
+    .promo-row { display:flex; gap:8px; }
+    .promo-input{flex:1; min-width:0;}
+    .promo-btn{flex:0 0 auto;}
+
+    .promo-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      padding: 12px 12px;
+      font-size: 14px;
+      background: #fff;
+      color: #111;
+    }
+
+    .promo-btn {
+      background: #67cf73;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .promo-status {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #b8ffbf;
+      min-height: 16px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 16px 0 8px;
+      font-size: 18px;
+    }
+
+    .cart-total strong { color: #b8ffbf; }
+
+    .discount-line {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0 8px;
+      font-size: 16px;
+      color: #ffe082;
+    }
+
+    .pay-btn {
+      background: #2AABEE;
+      margin-top: 10px;
+    }
+
+    .clear-btn {
+      background: #2f3734;
+      margin-top: 10px;
+    }
+
+    .small-note {
+      color: #eef3ef;
+      font-size: 12px;
+      line-height: 1.45;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .contact-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .round-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+      }
+
+      .icon {
+        width: 180px;
+        height: 180px;
+      }
+
+      .card h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="panel-overlay" id="menuOverlay" onclick="toggleMenu(false)"></div>
+  <div class="panel-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+
+  <aside class="side-panel" id="sideMenu">
+    <button class="panel-close-btn" onclick="toggleMenu(false)">×</button>
+    <div class="menu-header">
+      <div class="panel-logo">SubBridge</div>
+    </div>
+
+    <nav class="menu-links">
+      <a href="#home" onclick="goToSection(event, 'home')">Home</a>
+      <a href="#netflix" onclick="goToSection(event, 'netflix')">Netflix Premium</a>
+      <a href="#spotify" onclick="goToSection(event, 'spotify')">Spotify Premium</a>
+      <a href="#youtube" onclick="goToSection(event, 'youtube')">YouTube Premium</a>
+      <a href="#discord" onclick="goToSection(event, 'discord')">Discord Nitro</a>
+      <a href="#chatgpt" onclick="goToSection(event, 'chatgpt')">ChatGPT</a>
+      <a href="#zoom" onclick="goToSection(event, 'zoom')">Zoom</a>
+    </nav>
+  </aside>
+
+  <aside class="side-panel" id="cartPanel" style="background:#111;">
+    <button class="panel-close-btn" onclick="toggleCart(false)">×</button>
+    <div class="cart-header">
+      <div class="panel-title">Корзина</div>
+    </div>
+
+    <div id="cartEmpty" class="cart-empty">Корзина пока пустая.</div>
+    <div id="cartItems"></div>
+
+    <div class="promo-box">
+      <div class="promo-label">Промокод</div>
+      <div class="promo-row">
+        <input id="promoInput" class="promo-input" type="text" placeholder="Введите промокод">
+        <button class="promo-btn" onclick="applyPromo()">Применить</button>
+      </div>
+      <div id="promoStatus" class="promo-status"></div>
+    </div>
+
+    <div id="discountLine" class="discount-line">
+      <span>Скидка:</span>
+      <strong id="discountValue">0 ₽</strong>
+    </div>
+
+    <div class="cart-total">
+      <span>Итого:</span>
+      <strong id="totalPrice">0 ₽</strong>
+    </div>
+
+    <button class="btn pay-btn" onclick="payInTelegram()">Оплатить в Telegram</button>
+    <button class="btn clear-btn" onclick="clearCart()">Очистить корзину</button>
+
+    <div class="small-note">
+      Кнопка оплаты ведёт в Telegram на аккаунт <b>@SubBridge123</b>.
+      <br>Тестовые промокоды: <b>SALE10</b>, <b>VIP20</b>
+    </div>
+  </aside>
+
+  <div class="container" id="home">
+    <div class="topbar">
+      <button class="contact-btn" onclick="window.open('https://t.me/SubBridge123', '_blank')">Связаться ↗</button>
+      <div class="logo">SubBridge</div>
+      <div class="top-actions">
+        <button class="round-btn" onclick="toggleCart(true)">🛒<span class="cart-count" id="cartCount">0</span></button>
+        <button class="round-btn" onclick="toggleMenu(true)">☰</button>
+      </div>
+    </div>
+
+    <h1>Все твои любимые сервисы — под одной крышей</h1>
+
+    <div class="products">
+      <div class="card" id="netflix" data-id="1" data-name="Netflix Premium" data-price="499">
+        <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Premium"></div>
+        <h2>Netflix Premium</h2>
+        <p class="desc">Все лучшие фильмы и сериалы — в отличном качестве, без ограничений и рекламы.</p>
+        <div class="price">499 ₽</div>
+        <button class="btn add-btn" onclick="addToCart(this)">Добавить в корзину</button>
+      </div>
+
+      <div class="card" id="youtube" data-id="2" data-name="YouTube Premium" data-price="399">
+        <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube Premium"></div>
+        <h2>YouTube Premium</h2>
+        <p class="desc">Видео без рекламы, оффлайн-доступ и полная свобода просмотра.</p>
+        <div class="price">399 ₽</div>
+        <button class="btn add-btn" onclick="addToCart(this)">Добавить в корзину</button>
+      </div>
+
+      <div class="card" id="discord" data-id="3" data-name="Discord Nitro" data-price="299">
+        <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord Nitro"></div>
+        <h2>Discord Nitro</h2>
+        <p class="desc">Общайся без границ — улучшенные сервера, эмодзи и максимальное качество связи.</p>
+        <div class="price">299 ₽</div>
+        <button class="btn add-btn" onclick="addToCart(this)">Добавить в корзину</button>
+      </div>
+
+      <div class="card" id="spotify" data-id="4" data-name="Spotify Premium" data-price="349">
+        <div class="icon"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968959.png" alt="Spotify Premium"></div>
+        <h2>Spotify Premium</h2>
+        <p class="desc">Слушай любимую музыку без рекламы и пропусков. Всегда в твоём ритме.</p>
+        <div class="price">349 ₽</div>
+        <button class="btn add-btn" onclick="addToCart(this)">Добавить в корзину</button>
+      </div>
+
+      <div class="card" id="chatgpt" data-id="5" data-name="ChatGPT" data-price="990">
+        <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT"></div>
+        <h2>ChatGPT</h2>
+        <p class="desc">Твой умный помощник для работы, учёбы, генерации текстов и идей.</p>
+        <div class="price">990 ₽</div>
+        <button class="btn add-btn" onclick="addToCart(this)">Добавить в корзину</button>
+      </div>
+
+      <div class="card" id="zoom" data-id="6" data-name="Zoom" data-price="650">
+        <div class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoom_Communications_Logo.svg" alt="Zoom"></div>
+        <h2>Zoom</h2>
+        <p class="desc">Надёжные видеоконференции, встречи с командой и стабильная связь.</p>
+        <div class="price">650 ₽</div>
+        <button class="btn add-btn" onclick="addToCart(this)">Добавить в корзину</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+    const telegramUsername = "SubBridge123";
+    let promoCode = "";
+    let promoPercent = 0;
+
+    const promoMap = {
+      "SALE10": 10,
+      "VIP20": 20
+    };
+
+    function toggleMenu(open) {
+      const sideMenu = document.getElementById("sideMenu");
+      const menuOverlay = document.getElementById("menuOverlay");
+      if (open) {
+        sideMenu.classList.add("open");
+        menuOverlay.classList.add("show");
+        toggleCart(false);
+      } else {
+        sideMenu.classList.remove("open");
+        menuOverlay.classList.remove("show");
+      }
+    }
+
+    function toggleCart(open) {
+      const cartPanel = document.getElementById("cartPanel");
+      const cartOverlay = document.getElementById("cartOverlay");
+      if (open) {
+        cartPanel.classList.add("open");
+        cartOverlay.classList.add("show");
+        toggleMenu(false);
+      } else {
+        cartPanel.classList.remove("open");
+        cartOverlay.classList.remove("show");
+      }
+    }
+
+    function goToSection(event, id) {
+      event.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      toggleMenu(false);
+    }
+
+    function formatPrice(value) {
+      return value.toLocaleString("ru-RU") + " ₽";
+    }
+
+    function getSubtotal() {
+      return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    }
+
+    function getDiscount() {
+      return Math.round(getSubtotal() * (promoPercent / 100));
+    }
+
+    function getTotal() {
+      return Math.max(0, getSubtotal() - getDiscount());
+    }
+
+    function addToCart(button) {
+      const card = button.closest(".card");
+      const id = card.dataset.id;
+      const name = card.dataset.name;
+      const price = Number(card.dataset.price);
+
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, name, price, qty: 1 });
+      }
+
+      renderCart();
+      toggleCart(true);
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(x => x.id === id);
+      if (!item) return;
+
+      item.qty += delta;
+      if (item.qty <= 0) {
+        removeItem(id);
+        return;
+      }
+      renderCart();
+    }
+
+    function removeItem(id) {
+      const index = cart.findIndex(x => x.id === id);
+      if (index !== -1) cart.splice(index, 1);
+      renderCart();
+    }
+
+    function clearCart() {
+      cart.length = 0;
+      promoCode = "";
+      promoPercent = 0;
+      document.getElementById("promoInput").value = "";
+      document.getElementById("promoStatus").textContent = "";
+      renderCart();
+    }
+
+    function applyPromo() {
+      const input = document.getElementById("promoInput");
+      const status = document.getElementById("promoStatus");
+      const code = input.value.trim().toUpperCase();
+
+      if (!code) {
+        promoCode = "";
+        promoPercent = 0;
+        status.textContent = "Введите промокод.";
+        renderCart();
+        return;
+      }
+
+      if (promoMap[code]) {
+        promoCode = code;
+        promoPercent = promoMap[code];
+        status.textContent = `Промокод ${code} применён. Скидка ${promoPercent}%`;
+      } else {
+        promoCode = "";
+        promoPercent = 0;
+        status.textContent = "Промокод не найден.";
+      }
+
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById("cartItems");
+      const cartEmpty = document.getElementById("cartEmpty");
+      const totalPrice = document.getElementById("totalPrice");
+      const cartCount = document.getElementById("cartCount");
+      const discountLine = document.getElementById("discountLine");
+      const discountValue = document.getElementById("discountValue");
+
+      cartItems.innerHTML = "";
+
+      let count = 0;
+
+      if (cart.length === 0) {
+        cartEmpty.style.display = "block";
+      } else {
+        cartEmpty.style.display = "none";
+      }
+
+      cart.forEach(item => {
+        const sum = item.price * item.qty;
+        count += item.qty;
+
+        const el = document.createElement("div");
+        el.className = "cart-item";
+        el.innerHTML = `
+          <div class="cart-item-top">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-sum">${formatPrice(sum)}</div>
+          </div>
+          <div class="cart-controls">
+            <div class="qty-wrap">
+              <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+            </div>
+            <button class="remove-btn" onclick="removeItem('${item.id}')">Удалить</button>
+          </div>
+        `;
+        cartItems.appendChild(el);
+      });
+
+      const discount = getDiscount();
+      const total = getTotal();
+
+      if (discount > 0) {
+        discountLine.style.display = "flex";
+        discountValue.textContent = "-" + formatPrice(discount);
+      } else {
+        discountLine.style.display = "none";
+        discountValue.textContent = "0 ₽";
+      }
+
+      totalPrice.textContent = formatPrice(total);
+      cartCount.textContent = count;
+    }
+
+    function payInTelegram() {
+      if (cart.length === 0) {
+        alert("Корзина пустая");
+        return;
+      }
+
+      const subtotal = getSubtotal();
+      const discount = getDiscount();
+      const total = getTotal();
+
+      let text = "Здравствуйте! Хочу оформить заказ:%0A%0A";
+
+      cart.forEach(item => {
+        const sum = item.price * item.qty;
+        text += `${item.name} — ${item.qty} шт. — ${sum} ₽%0A`;
+      });
+
+      text += `%0AСумма: ${subtotal} ₽`;
+
+      if (promoPercent > 0) {
+        text += `%0AПромокод: ${promoCode}`;
+        text += `%0AСкидка: ${discount} ₽`;
+      }
+
+      text += `%0AИтого: ${total} ₽`;
+
+      const telegramLink = `https://t.me/${telegramUsername}?text=${text}`;
+      window.open(telegramLink, "_blank");
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
